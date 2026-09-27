@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teia da Redação</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#dfe5ea;
+  color:#17212b;
+}
+
+header{
+  background:#0d1b2a;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:25px;
+}
+
+header p{
+  margin:6px 0 0;
+  opacity:.8;
+}
+
+.container{
+  width:95%;
+  max-width:1100px;
+  margin:20px auto;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+h2{
+  margin-top:0;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:12px;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccd3da;
+  border-radius:10px;
+  font-size:16px;
+  margin-top:6px;
+}
+
+textarea{
+  min-height:280px;
+  resize:vertical;
+}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  margin:5px;
+}
+
+.btn-primary{
+  background:#0d1b2a;
+  color:white;
+}
+
+.btn-secondary{
+  background:#e8edf2;
+  color:#17212b;
+}
+
+.btn-green{
+  background:#198754;
+  color:white;
+}
+
+.hidden{
+  display:none;
+}
+
+/* FOLHA */
+
+.paper{
+  position:relative;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #fff 0px,
+      #fff 31px,
+      #b9d4ed 32px
+    );
+  min-height:650px;
+  padding:35px 25px 40px 55px;
+  border-radius:5px;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+
+.paper:before{
+  content:"";
+  position:absolute;
+  left:40px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:#e99;
+}
+
+.page-title{
+  text-align:center;
+  font-weight:bold;
+  margin-bottom:25px;
+  position:relative;
+}
+
+/* TEIA */
+
+.web-container{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:30px 20px 60px;
+}
+
+.web{
+  position:relative;
+  min-width:950px;
+  min-height:480px;
+}
+
+.node{
+  position:absolute;
+  background:white;
+  border:3px solid #0d1b2a;
+  border-radius:50%;
+  min-width:110px;
+  min-height:70px;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:bold;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  z-index:2;
+}
+
+.root{
+  left:20px;
+  top:190px;
+  background:#0d1b2a;
+  color:white;
+}
+
+.level1{
+  left:230px;
+}
+
+.level2{
+  left:470px;
+}
+
+.level3{
+  left:710px;
+}
+
+.l1a{top:70px;}
+.l1b{top:190px;}
+.l1c{top:310px;}
+
+.l2a{top:25px;}
+.l2b{top:100px;}
+.l2c{top:175px;}
+.l2d{top:250px;}
+.l2e{top:325px;}
+.l2f{top:400px;}
+
+.l3a{top:0;}
+.l3b{top:55px;}
+.l3c{top:110px;}
+.l3d{top:165px;}
+.l3e{top:220px;}
+.l3f{top:275px;}
+.l3g{top:330px;}
+.l3h{top:385px;}
+
+.line{
+  position:absolute;
+  height:3px;
+  background:#718096;
+  transform-origin:left center;
+  z-index:1;
+}
+
+/* REDAÇÃO */
+
+.essay-box{
+  background:rgba(255,255,255,.75);
+  padding:25px;
+  border-radius:12px;
+  line-height:2;
+  font-size:18px;
+  white-space:pre-wrap;
+}
+
+/* HISTÓRICO */
+
+.history-item{
+  background:#f3f5f7;
+  padding:15px;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.history-item strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.small{
+  font-size:13px;
+  color:#667;
+}
+
+@media(max-width:600px){
+
+  .paper{
+    min-height:600px;
+    padding-left:48px;
+  }
+
+  .web{
+    min-width:900px;
+  }
+
+  .essay-box{
+    font-size:16px;
+  }
+
+  header h1{
+    font-size:21px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🕸️ Teia da Redação</h1>
+  <p>Palavras → relações → frases → redação</p>
+</header>
+
+<div class="container">
+
+  <!-- INÍCIO -->
+
+  <section id="inicio" class="card">
+
+    <h2>Começar uma redação</h2>
+
+    <label>Tema 1</label>
+    <input
+      id="tema1"
+      placeholder="Digite o primeiro tema"
+    >
+
+    <label>Tema 2</label>
+    <input
+      id="tema2"
+      placeholder="Digite o segundo tema (opcional)"
+    >
+
+    <br>
+
+    <button
+      class="btn-primary"
+      onclick="comecar()"
+    >
+      COMEÇAR TEIA
+    </button>
+
+  </section>
+
+
+  <!-- FOLHA 1 -->
+
+  <section id="folha1" class="hidden">
+
+    <div class="paper">
+
+      <div class="page-title">
+        FOLHA 1 — INÍCIO DA TEIA
+      </div>
+
+      <div class="web-container">
+
+        <div
+          id="web1"
+          class="web"
+        ></div>
+
+      </div>
+
+      <div style="text-align:center">
+
+        <button
+          class="btn-secondary"
+          onclick="voltarInicio()"
+        >
+          ← Voltar
+        </button>
+
+        <button
+          class="btn-primary"
+          onclick="irFolha2()"
+        >
+          Próxima folha →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOLHA 2 -->
+
+  <section id="folha2" class="hidden">
+
+    <div class="paper">
+
+      <div class="page-title">
+        FOLHA 2 — CONTINUAÇÃO DA TEIA
+      </div>
+
+      <div class="web-container">
+
+        <div
+          id="web2"
+          class="web"
+        ></div>
+
+      </div>
+
+      <div style="text-align:center">
+
+        <button
+          class="btn-secondary"
+          onclick="voltarFolha1()"
+        >
+          ← Folha anterior
+        </button>
+
+        <button
+          class="btn-primary"
+          onclick="irFolha3()"
+        >
+          Ir para redação →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOLHA 3 -->
+
+  <section id="folha3" class="hidden">
+
+    <div class="paper">
+
+      <div class="page-title">
+        FOLHA 3 — REDAÇÃO FINAL
+      </div>
+
+      <div
+        id="essay"
+        class="essay-box"
+      ></div>
+
+      <br>
+
+      <label>
+        Você pode revisar e editar sua redação:
+      </label>
+
+      <textarea
+        id="essayEditor"
+      ></textarea>
+
+      <div style="text-align:center">
+
+        <button
+          class="btn-secondary"
+          onclick="voltarFolha2()"
+        >
+          ← Voltar para teia
+        </button>
+
+        <button
+          class="btn-green"
+          onclick="revisarTexto()"
+        >
+          Revisar pontuação
+        </button>
+
+        <button
+          class="btn-primary"
+          onclick="salvarRedacao()"
+        >
+          💾 Salvar redação
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HISTÓRICO -->
+
+  <section class="card">
+
+    <h2>📚 Minhas redações</h2>
+
+    <div id="historico">
+      Nenhuma redação salva ainda.
+    </div>
+
+  </section>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   BANCO TEMPORÁRIO
+   DEPOIS SERÁ SUBSTITUÍDO PELA API DO WALKER MÍDIA
+===================================================== */
+
+const bancoPalavras = {
+
+  "ação":[
+    "atitude",
+    "movimento",
+    "iniciativa"
+  ],
+
+  "atitude":[
+    "comportamento",
+    "postura",
+    "decisão"
+  ],
+
+  "movimento":[
+    "mudança",
+    "transformação",
+    "avanço"
+  ],
+
+  "iniciativa":[
+    "participação",
+    "prática",
+    "responsabilidade"
+  ],
+
+  "comportamento":[
+    "convivência",
+    "respeito",
+    "sociedade"
+  ],
+
+  "postura":[
+    "consciência",
+    "posição",
+    "escolha"
+  ],
+
+  "decisão":[
+    "responsabilidade",
+    "consequência",
+    "resultado"
+  ],
+
+  "mudança":[
+    "melhoria",
+    "desenvolvimento",
+    "adaptação"
+  ],
+
+  "transformação":[
+    "progresso",
+    "evolução",
+    "renovação"
+  ],
+
+  "avanço":[
+    "crescimento",
+    "desenvolvimento",
+    "progresso"
+  ],
+
+  "participação":[
+    "colaboração",
+    "envolvimento",
+    "comunidade"
+  ],
+
+  "prática":[
+    "experiência",
+    "aplicação",
+    "aprendizado"
+  ],
+
+  "responsabilidade":[
+    "compromisso",
+    "dever",
+    "cuidado"
+  ]
+
+};
+
+
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
+
+let temaPrincipal = "";
+
+let segundoTema = "";
+
+let palavrasUsadas = new Set();
+
+let palavrasTeia = [];
+
+let frases = [];
+
+
+/* =====================================================
+   COMEÇAR
+===================================================== */
+
+function comecar(){
+
+  temaPrincipal =
+    document.getElementById("tema1")
+    .value
+    .trim();
+
+  segundoTema =
+    document.getElementById("tema2")
+    .value
+    .trim();
+
+  if(!temaPrincipal){
+
+    alert("Digite pelo menos o Tema 1.");
+
+    return;
+  }
+
+  palavrasUsadas.clear();
+
+  palavrasTeia = [];
+
+  frases = [];
+
+  palavrasUsadas.add(
+    temaPrincipal.toLowerCase()
+  );
+
+  palavrasTeia.push(temaPrincipal);
+
+  if(segundoTema){
+
+    palavrasUsadas.add(
+      segundoTema.toLowerCase()
+    );
+
+    palavrasTeia.push(segundoTema);
+
+  }
+
+  montarFolha1();
+
+  document
+    .getElementById("inicio")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha1")
+    .classList.remove("hidden");
+
+}
+
+
+/* =====================================================
+   BUSCAR RELAÇÕES
+===================================================== */
+
+function buscarPalavras(palavra){
+
+  const chave =
+    palavra
+      .toLowerCase()
+      .trim();
+
+  if(bancoPalavras[chave]){
+
+    return bancoPalavras[chave];
+
+  }
+
+  /*
+    Enquanto o Walker Mídia não estiver conectado,
+    usamos relações genéricas.
+  */
+
+  return [
+    "ideia",
+    "questão",
+    "sociedade"
+  ];
+
+}
+
+
+/* =====================================================
+   PEGAR PALAVRAS SEM REPETIR
+===================================================== */
+
+function pegarNovasPalavras(palavra){
+
+  const relacionadas =
+    buscarPalavras(palavra);
+
+  const novas = [];
+
+  for(const item of relacionadas){
+
+    const chave =
+      item.toLowerCase().trim();
+
+    if(!palavrasUsadas.has(chave)){
+
+      palavrasUsadas.add(chave);
+
+      novas.push(item);
+
+    }
+
+    if(novas.length >= 3){
+      break;
+    }
+
+  }
+
+  return novas;
+}
+
+
+/* =====================================================
+   FOLHA 1
+===================================================== */
+
+function montarFolha1(){
+
+  const web =
+    document.getElementById("web1");
+
+  web.innerHTML = "";
+
+  criarNode(
+    web,
+    temaPrincipal,
+    "node root"
+  );
+
+  const relacoes =
+    pegarNovasPalavras(temaPrincipal);
+
+  const classes = [
+    "l1a",
+    "l1b",
+    "l1c"
+  ];
+
+  relacoes.forEach(
+    (palavra,index)=>{
+
+      palavrasTeia.push(palavra);
+
+      criarNode(
+        web,
+        palavra,
+        "node level1 " + classes[index]
+      );
+
+      criarLinha(
+        web,
+        130,
+        225,
+        230,
+        105 + index * 120
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   FOLHA 2
+===================================================== */
+
+function montarFolha2(){
+
+  const web =
+    document.getElementById("web2");
+
+  web.innerHTML = "";
+
+  criarNode(
+    web,
+    temaPrincipal,
+    "node root"
+  );
+
+  const nivel1 =
+    pegarNovasPalavras(temaPrincipal);
+
+  const classes1 = [
+    "l1a",
+    "l1b",
+    "l1c"
+  ];
+
+  nivel1.forEach(
+    (palavra,index)=>{
+
+      palavrasTeia.push(palavra);
+
+      criarNode(
+        web,
+        palavra,
+        "node level1 " + classes1[index]
+      );
+
+      criarLinha(
+        web,
+        130,
+        225,
+        230,
+        105 + index * 120
+      );
+
+      const nivel2 =
+        pegarNovasPalavras(palavra);
+
+      const posicoes = [
+        25,
+        100,
+        175
+      ];
+
+      nivel2.forEach(
+        (novaPalavra,j)=>{
+
+          palavrasTeia.push(
+            novaPalavra
+          );
+
+          criarNode(
+            web,
+            novaPalavra,
+            "node level2",
+          );
+
+          const node =
+            web.lastElementChild;
+
+          node.style.top =
+            (
+              index * 120 +
+              posicoes[j]
+            ) + "px";
+
+          criarLinha(
+            web,
+            340,
+            105 + index * 120,
+            470,
+            index * 120 + posicoes[j] + 30
+          );
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   CRIAR NÓ
+===================================================== */
+
+function criarNode(
+  container,
+  texto,
+  classe
+){
+
+  const node =
+    document.createElement("div");
+
+  node.className = classe;
+
+  node.textContent = texto;
+
+  container.appendChild(node);
+
+}
+
+
+/* =====================================================
+   LINHAS
+===================================================== */
+
+function criarLinha(
+  container,
+  x1,
+  y1,
+  x2,
+  y2
+){
+
+  const linha =
+    document.createElement("div");
+
+  linha.className = "line";
+
+  const dx = x2 - x1;
+
+  const dy = y2 - y1;
+
+  const distancia =
+    Math.sqrt(
+      dx * dx +
+      dy * dy
+    );
+
+  const angulo =
+    Math.atan2(dy,dx)
+    * 180 / Math.PI;
+
+  linha.style.left =
+    x1 + "px";
+
+  linha.style.top =
+    y1 + "px";
+
+  linha.style.width =
+    distancia + "px";
+
+  linha.style.transform =
+    `rotate(${angulo}deg)`;
+
+  container.appendChild(linha);
+
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function irFolha2(){
+
+  montarFolha2();
+
+  document
+    .getElementById("folha1")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha2")
+    .classList.remove("hidden");
+
+}
+
+
+function voltarFolha1(){
+
+  document
+    .getElementById("folha2")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha1")
+    .classList.remove("hidden");
+
+}
+
+
+function irFolha3(){
+
+  montarRedacao();
+
+  document
+    .getElementById("folha2")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha3")
+    .classList.remove("hidden");
+
+}
+
+
+function voltarFolha2(){
+
+  document
+    .getElementById("folha3")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha2")
+    .classList.remove("hidden");
+
+}
+
+
+function voltarInicio(){
+
+  document
+    .getElementById("folha1")
+    .classList.add("hidden");
+
+  document
+    .getElementById("inicio")
+    .classList.remove("hidden");
+
+}
+
+
+/* =====================================================
+   GERAR FRASES
+===================================================== */
+
+function gerarFrase(palavra){
+
+  const modelos = [
+
+    `A ${palavra.toLowerCase()} está relacionada às transformações presentes na sociedade.`,
+
+    `Nesse contexto, a ${palavra.toLowerCase()} pode influenciar diferentes situações do cotidiano.`,
+
+    `Além disso, é importante compreender a importância da ${palavra.toLowerCase()} para a sociedade.`
+
+  ];
+
+  const indice =
+    frases.length %
+    modelos.length;
+
+  return modelos[indice];
+
+}
+
+
+/* =====================================================
+   MONTAR REDAÇÃO
+===================================================== */
+
+function montarRedacao(){
+
+  frases = [];
+
+  const palavras =
+    [...new Set(palavrasTeia)];
+
+  palavras.forEach(
+    palavra => {
+
+      if(
+        palavra.toLowerCase() !==
+        temaPrincipal.toLowerCase()
+      ){
+
+        frases.push(
+          gerarFrase(palavra)
+        );
+
+      }
+
+    }
+  );
+
+  const introducao =
+    `O tema ${temaPrincipal} apresenta uma questão importante para a sociedade. Compreender seus diferentes aspectos permite observar como determinadas situações influenciam o cotidiano.`;
+
+  const desenvolvimento =
+    frases
+      .slice(0,5)
+      .join(" ");
+
+  const conclusao =
+    `Dessa forma, a reflexão sobre esse tema é importante para buscar mudanças positivas e incentivar atitudes responsáveis.`;
+
+  const textoFinal =
+    introducao +
+    "\n\n" +
+    desenvolvimento +
+    "\n\n" +
+    conclusao;
+
+  document
+    .getElementById("essay")
+    .textContent =
+    textoFinal;
+
+  document
+    .getElementById("essayEditor")
+    .value =
+    textoFinal;
+
+}
+
+
+/* =====================================================
+   REVISÃO BÁSICA
+===================================================== */
+
+function revisarTexto(){
+
+  let texto =
+    document
+      .getElementById("essayEditor")
+      .value;
+
+  texto =
+    texto.replace(
+      /\s+/g,
+      " "
+    );
+
+  texto =
+    texto.replace(
+      /\s+([,.!?;:])/g,
+      "$1"
+    );
+
+  texto =
+    texto.replace(
+      /([,.!?;:])([^\s\n])/g,
+      "$1 $2"
+    );
+
+  texto =
+    texto.trim();
+
+  if(texto.length > 0){
+
+    texto =
+      texto.charAt(0).toUpperCase() +
+      texto.slice(1);
+
+  }
+
+  document
+    .getElementById("essayEditor")
+    .value =
+    texto;
+
+}
+
+
+/* =====================================================
+   SALVAR REDAÇÃO
+===================================================== */
+
+function salvarRedacao(){
+
+  const texto =
+    document
+      .getElementById("essayEditor")
+      .value
+      .trim();
+
+  if(!texto){
+
+    alert("A redação está vazia.");
+
+    return;
+
+  }
+
+  const historico =
+    JSON.parse(
+      localStorage.getItem(
+        "teia_redacoes"
+      ) || "[]"
+    );
+
+  historico.unshift({
+
+    data:
+      new Date().toLocaleString(
+        "pt-BR"
+      ),
+
+    tema1:
+      temaPrincipal,
+
+    tema2:
+      segundoTema,
+
+    palavras:
+      palavrasTeia,
+
+    redacao:
+      texto
+
+  });
+
+  localStorage.setItem(
+    "teia_redacoes",
+    JSON.stringify(historico)
+  );
+
+  carregarHistorico();
+
+  alert(
+    "Redação salva no navegador."
+  );
+
+}
+
+
+/* =====================================================
+   HISTÓRICO
+===================================================== */
+
+function carregarHistorico(){
+
+  const historico =
+    JSON.parse(
+      localStorage.getItem(
+        "teia_redacoes"
+      ) || "[]"
+    );
+
+  const area =
+    document.getElementById(
+      "historico"
+    );
+
+  if(historico.length === 0){
+
+    area.innerHTML =
+      "Nenhuma redação salva ainda.";
+
+    return;
+
+  }
+
+  area.innerHTML = "";
+
+  historico.forEach(
+    (item,index)=>{
+
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "history-item";
+
+      div.innerHTML = `
+
+        <strong>
+          ${item.tema1}
+        </strong>
+
+        <div class="small">
+          ${item.data}
+        </div>
+
+        <p>
+          ${item.redacao.substring(
+            0,
+            180
+          )}...
+        </p>
+
+        <button
+          class="btn-secondary"
+          onclick="verRedacao(${index})"
+        >
+          Ver redação
+        </button>
+
+        <button
+          class="btn-secondary"
+          onclick="excluirRedacao(${index})"
+        >
+          Excluir
+        </button>
+
+      `;
+
+      area.appendChild(div);
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   VER REDAÇÃO
+===================================================== */
+
+function verRedacao(index){
+
+  const historico =
+    JSON.parse(
+      localStorage.getItem(
+        "teia_redacoes"
+      ) || "[]"
+    );
+
+  const item =
+    historico[index];
+
+  if(!item) return;
+
+  document
+    .getElementById("inicio")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha1")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha2")
+    .classList.add("hidden");
+
+  document
+    .getElementById("folha3")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("essay")
+    .textContent =
+    item.redacao;
+
+  document
+    .getElementById("essayEditor")
+    .value =
+    item.redacao;
+
+}
+
+
+/* =====================================================
+   EXCLUIR
+===================================================== */
+
+function excluirRedacao(index){
+
+  const confirmar =
+    confirm(
+      "Excluir esta redação?"
+    );
+
+  if(!confirmar) return;
+
+  const historico =
+    JSON.parse(
+      localStorage.getItem(
+        "teia_redacoes"
+      ) || "[]"
+    );
+
+  historico.splice(
+    index,
+    1
+  );
+
+  localStorage.setItem(
+    "teia_redacoes",
+    JSON.stringify(historico)
+  );
+
+  carregarHistorico();
+
+}
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+carregarHistorico();
+
+</script>
+
+</body>
+</html>
